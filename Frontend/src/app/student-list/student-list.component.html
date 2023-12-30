@@ -1,0 +1,29 @@
+<h2> Student List </h2>
+<button (click) = "getStudentsByDesc()" class="btn btn-secondary">Descending order</button>
+<button (click) = "getStudents()" class="btn btn-secondary" style="margin-left: 10px;">Reset</button>
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <!-- <th>ID</th> -->
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Id</th>
+                <th>Department</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let student of students" >
+                <!-- <td>{{ student.id }}</td> -->
+                <td>{{ student.firstName }}</td>
+                <td>{{ student.lastName }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.departmentName }}</td>
+                 <td>
+                    <button (click) = "updateStudent(student.id)" class = "btn btn-primary" >Update</button>
+                    <button (click) = "deleteStudent(student.id)" class = "btn btn-danger" style="margin-left: 10px;">Delete</button>
+
+                </td>
+            </tr>
+        </tbody>
+</table>

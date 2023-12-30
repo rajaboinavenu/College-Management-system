@@ -1,0 +1,97 @@
+<div class="col-md-6 offset-md-3">
+
+    <h3> Create Professor Record</h3>
+    
+    <form (ngSubmit)="onSubmit()" #professorForm="ngForm" novalidate>
+
+        <div class="form-group">
+            <label for="professorName">Name</label>
+            <input type="text" class="form-control" id="professorName" name="professorName"
+                [(ngModel)]="professor.professorName" required minlength="3" maxlength="50">
+            <div *ngIf="professorForm.controls['professorName'].hasError('required') && (professorForm.controls['professorName'].dirty || professorForm.controls['professorName'].touched)"
+                class="text-danger">
+                Name is required.
+            </div>
+            <div *ngIf="professorForm.controls['professorName'].hasError('minlength')" class="text-danger">
+                Name must be at least 3 characters long.
+            </div>
+            <div *ngIf="professorForm.controls['professorName'].hasError('maxlength')" class="text-danger">
+                Name cannot exceed 50 characters.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="contactNumber">Contact</label>
+            <input type="text" class="form-control" id="contactNumber" name="contactNumber"
+                [(ngModel)]="professor.contactNumber" required pattern="[0-9]+">
+            <div *ngIf="professorForm.controls['contactNumber'].hasError('required') && (professorForm.controls['contactNumber'].dirty || professorForm.controls['contactNumber'].touched)"
+                class="text-danger">
+                Contact is required.
+            </div>
+            <div *ngIf="professorForm.controls['contactNumber'].hasError('pattern')" class="text-danger">
+                Please enter a valid contact number.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Id</label>
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="professor.email" required
+                email>
+            <div *ngIf="professorForm.controls['email'].hasError('required') && (professorForm.controls['email'].dirty || professorForm.controls['email'].touched)"
+                class="text-danger">
+                Email is required.
+            </div>
+            <div *ngIf="professorForm.controls['email'].hasError('email') && (professorForm.controls['email'].dirty || professorForm.controls['email'].touched)"
+                class="text-danger">
+                Please enter a valid email address.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="departmentName">Department</label>
+            <select name="departmentName" class="form-control" id="departmentName"
+                [(ngModel)]="professor.departmentName" required>
+                <option value="">Select Department</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Civil">Civil</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Electrical">Electrical</option>
+            </select>
+            <div *ngIf="professorForm.controls['departmentName'].hasError('required') && (professorForm.controls['departmentName'].dirty || professorForm.controls['departmentName'].touched)"
+                class="text-danger">
+                Department is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="experience">Experience(Yrs)</label>
+            <input type="text" class="form-control" id="experience" [(ngModel)]="professor.experience" name="experience"
+                required pattern="[0-9]+">
+            <div *ngIf="professorForm.controls['experience'].hasError('required') && (professorForm.controls['experience'].dirty || professorForm.controls['experience'].touched)"
+                class="text-danger">
+                Experience is required.
+            </div>
+            <div *ngIf="professorForm.controls['experience'].hasError('pattern')" class="text-danger">
+                Please enter a valid number for experience.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="designation">Designation</label>
+            <input type="text" class="form-control" id="designation" [(ngModel)]="professor.designation"
+                name="designation" required minlength="3" maxlength="50">
+            <div *ngIf="professorForm.controls['designation'].hasError('required') && (professorForm.controls['designation'].dirty || professorForm.controls['designation'].touched)"
+                class="text-danger">
+                Designation is required.
+            </div>
+            <div *ngIf="professorForm.controls['designation'].hasError('minlength')" class="text-danger">
+                Designation must be at least 3 characters long.
+            </div>
+            <div *ngIf="professorForm.controls['designation'].hasError('maxlength')" class="text-danger">
+                Designation cannot exceed 50 characters.
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-success" type="submit">Submit</button>
+        <button class="btn1 btn" style="margin-left:10px ;" type="reset">Clear</button>
+    </form>
+
+</div>

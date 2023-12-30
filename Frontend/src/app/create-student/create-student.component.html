@@ -1,0 +1,61 @@
+<div class="col-md-6 offset-md-3">
+
+    <h3> Create Student Record</h3>
+
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName">
+            <div *ngIf="studentForm.get('firstName')?.hasError('required') && studentForm.get('firstName')?.touched"
+                class="text-danger">
+                First Name is required.
+            </div>
+            <div *ngIf="studentForm.get('firstName')?.hasError('maxlength')" class="text-danger">
+                Maximum length exceeded (50 characters).
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName">
+            <div *ngIf="studentForm.get('lastName')?.hasError('required') && studentForm.get('lastName')?.touched"
+                class="text-danger">
+                Last Name is required.
+            </div>
+            <div *ngIf="studentForm.get('lastName')?.hasError('maxlength')" class="text-danger">
+                Maximum length exceeded (50 characters).
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Email Id</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+            <div *ngIf="studentForm.get('email')?.hasError('required') && studentForm.get('email')?.touched"
+                class="text-danger">
+                Email is required.
+            </div>
+            <div *ngIf="studentForm.get('email')?.hasError('email') && studentForm.get('email')?.touched"
+                class="text-danger">
+                Please enter a valid email address.
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Department</label>
+            <select name="departmentName" class="form-control" id="departmentName" formControlName="departmentName"
+                size="">
+                <option value="" disabled selected>Select Department</option>
+                <option>Computer Science</option>
+                <option>Civil</option>
+                <option>Mechanical</option>
+                <option>Electrical</option>
+            </select>
+            <div *ngIf="studentForm.get('departmentName')?.hasError('required') && studentForm.get('departmentName')?.touched"
+                class="text-danger">
+                Department is required.
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-success" type="submit" [disabled]="studentForm.invalid">Submit</button>
+        <button class="btn btn-secondary" style="margin-left:10px;" type="reset">Clear</button>
+    </form>
+
+</div>

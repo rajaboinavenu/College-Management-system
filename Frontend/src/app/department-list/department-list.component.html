@@ -1,0 +1,25 @@
+
+    <!-- <div class="col-md-8 offset-md-2"> -->
+<h2> Department List </h2>
+<button (click) = "getDepartmentsByDesc()" class="btn btn-secondary">Descending order</button>
+<button (click) = "getDepartments()" class="btn btn-secondary" style="margin-left: 10px;">Reset</button>
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Department Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let department of departments" >
+                <td>{{ department.id }}</td>
+                <td>{{ department.deptName }}</td>
+                <td>
+                    <button (click) = "deleteDepartment(department.id)" class = "btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+</table>
+
+<!-- </div> -->

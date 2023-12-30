@@ -1,0 +1,37 @@
+<div class="col-md-6 offset-md-3">
+
+    <h3> Create Department Record</h3>
+    <form (ngSubmit)="onSubmit()" #departmentForm="ngForm" novalidate>
+        <div class="form-group">
+            <label for="id">Id</label>
+            <input type="number" class="form-control" id="id" name="id" [(ngModel)]="department.id" required>
+            <div *ngIf="departmentForm.controls['id'].hasError('required') && (departmentForm.controls['id'].dirty || departmentForm.controls['id'].touched)"
+                class="text-danger">
+                Id is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="deptName">Department Name</label>
+            <input type="text" class="form-control" id="deptName" name="deptName" [(ngModel)]="department.deptName"
+                required minlength="3" maxlength="50">
+            <div *ngIf="departmentForm.controls['deptName'].hasError('required') && (departmentForm.controls['deptName'].dirty || departmentForm.controls['deptName'].touched)"
+                class="text-danger">
+                Department Name is required.
+            </div>
+            <div *ngIf="departmentForm.controls['deptName'].hasError('minlength') && (departmentForm.controls['deptName'].dirty || departmentForm.controls['deptName'].touched)"
+                class="text-danger">
+                Department Name must be at least 3 characters long.
+            </div>
+            <div *ngIf="departmentForm.controls['deptName'].hasError('maxlength') && (departmentForm.controls['deptName'].dirty || departmentForm.controls['deptName'].touched)"
+                class="text-danger">
+                Department Name cannot exceed 50 characters.
+            </div>
+        </div>
+
+        <br>
+        <button class="btn btn-success" type="submit">Submit</button>
+        <button class="btn1 btn" style="margin-left:10px ;" type="reset">Clear</button>
+    </form>
+
+</div>

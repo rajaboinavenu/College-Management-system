@@ -1,0 +1,31 @@
+<h2> Professor List </h2>
+<button (click) = "getProfessorsByDesc()" class="btn btn-secondary">Descending order</button>
+<button (click) = "getProfessors()" class="btn btn-secondary" style="margin-left: 10px;">Reset</button>
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <!-- <th>ID</th> -->
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email Id</th>
+                <th>Department</th>
+                <th>Experience</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let professor of professors" >
+                <!-- <td>{{ professor.id }}</td> -->
+                <td>{{ professor.professorName }}</td>
+                <td>{{ professor.contactNumber }}</td>
+                <td>{{ professor.email }}</td>
+                <td>{{ professor.departmentName }}</td>
+                <td>{{ professor.experience }}</td>
+
+                 <td>
+                    <button (click) = "updateProfessor(professor.id)" class = "btn btn-primary" >Update</button>
+                    <button (click) = "deleteProfessor(professor.id)" class = "btn btn-danger" style="margin-left: 10px;">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+</table>
